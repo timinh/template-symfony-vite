@@ -4,7 +4,7 @@ import { createPinia } from 'pinia'
 import {setupLayouts} from 'virtual:generated-layouts'
 import pages from '~pages'
 import App from './App.vue'
-import '../css/transitions.css'
+import '../scss/app.scss'
 
 const routes = setupLayouts(pages)
 

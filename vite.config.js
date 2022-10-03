@@ -5,6 +5,7 @@ import symfonyPlugin from "vite-plugin-symfony"
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 
 const twigRefreshPlugin = {
   name: 'twig-refresh',
@@ -32,6 +33,13 @@ export default defineConfig({
         }),
         Components({
             dirs: ['assets/js/components']
+        }),
+        AutoImport({
+          imports: [
+            'vue',
+            'vue-router',
+            '@vueuse/head'
+          ]
         }),
         symfonyPlugin(),
         twigRefreshPlugin

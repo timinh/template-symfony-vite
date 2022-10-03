@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <h2>default layout</h2>
+    <div class="container mt-4">
         <router-view />
     </div>
 </template>
