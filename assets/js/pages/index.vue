@@ -8,6 +8,7 @@
             <character-card class="m-1" v-for="character in store.characters" :character="character">
                 <button v-if="!store.inBookmarks(character)" @click="store.addBookmark(character)"
                     class="btn btn-secondary">Ajouter à mes favoris</button>
+                <router-link :to="`/character/${character.id}`" class="btn btn-secondary mt-2">Voir</router-link>
             </character-card>
         </div>
         <div class="text-center">

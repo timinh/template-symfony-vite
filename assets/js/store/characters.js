@@ -18,6 +18,9 @@ export const useCharacterStore = defineStore(
         getters: {
             inBookmarks: (state) => {
                 return (char) => char && state.bookmarks.findIndex( (c) => c.id === char.id)>-1
+            },
+            getCharacter: (state) => {
+                return (charId) => state.characters.find( (char) => char.id === parseInt(charId))
             }
         },
         actions: {
