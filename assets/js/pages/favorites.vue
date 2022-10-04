@@ -7,7 +7,7 @@
         <div class="row">
             <character-card class="m-1" v-for="character in filteredBookmarks" :character="character">
                 <button v-if="store.inBookmarks(character)" @click="store.removeBookmark(character)"
-                    class="btn btn-secondary">Enlever des favoris</button>
+                    class="btn btn-secondary">Enlever des favoris</button><br />
                 <router-link :to="`/character/${character.id}`" class="btn btn-secondary mt-2">Voir</router-link>
             </character-card>
         </div>
