@@ -7,12 +7,11 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="navbar-collapse" :class="(menuCollapsed) ? 'collapse' : ''" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto" v-if="nav">
                 <li class="nav-item" v-for="(n, index) in nav" :key="index">
-                    <router-link tag="a" class="nav-link" :to="n.link">
-                        {{n.label}}
+                    <router-link tag="a" class="nav-link" :to="n.path">
+                        {{n.name.toUpperCase()}}
                     </router-link>
                 </li>
             </ul>
@@ -20,11 +19,12 @@
     </nav>
 </template>
 <script setup>
-    const props = defineProps({
-        nav: {
-            type: Array,
-            required: true
-        }
+import {useRouter} from 'vue-router'
+    const {getRoutes} = useRouter()
+    const nav = computed( () => {
+        let routes = getRoutes()
+        return routes.filter( (r) => r.meta.nav)
     })
+
     const menuCollapsed = ref(true)
 </script>

@@ -15,6 +15,8 @@
 </template>
 <route lang="yaml">
 name: favoris
+meta:
+    nav: true
 </route>
 <script setup>
 import {useCharacterStore} from '../store/characters'

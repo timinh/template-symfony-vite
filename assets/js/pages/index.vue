@@ -18,7 +18,9 @@
     </div>
 </template>
 <route lang="yaml">
-name: home
+name: accueil
+meta:
+    nav: true
 </route>
 <script setup>
     import {useCharacterStore} from '../store/characters'
