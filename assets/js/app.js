@@ -4,7 +4,11 @@ import { createPinia } from 'pinia'
 import {setupLayouts} from 'virtual:generated-layouts'
 import pages from '~pages'
 import App from './App.vue'
-import '../scss/app.scss'
+import { Quasar } from 'quasar'
+import quasarLang from 'quasar/lang/fr'
+
+// Import icon libraries
+import quasarIconSet from 'quasar/icon-set/svg-material-icons'
 
 const routes = setupLayouts(pages)
 
@@ -12,4 +16,11 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
-createApp(App).use(router).use(createPinia()).mount('#app')
+createApp(App).use(
+	router
+).use(Quasar, {
+	plugins: {},
+	lang: quasarLang,
+	iconSet: quasarIconSet
+  }
+).use(createPinia()).mount('#app')

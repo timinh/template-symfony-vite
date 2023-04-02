@@ -1,13 +1,22 @@
 <template>
-    <div class="card border-primary mb-3" style="width: 18rem;">
-        <img :src="character.image" class="card-img-top" :alt="character.name">
-        <div class="card-body">
-            <h5 class="card-title">{{character.name}}</h5>
-            <p class="card-text">Espèce : {{character.species}}</p>
-            <p class="card-text">Apparait dans {{character.episode.length}} épisode(s)</p>
-            <slot />
-        </div>
-    </div>
+	<q-card class="my-card" flat bordered>
+      <img :src="character.image" :alt="character.name">
+
+      <q-list>
+        <q-item clickable>
+          <q-item-section avatar>
+            <q-icon color="primary" name="infos" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>{{character.name}}</q-item-label>
+            <q-item-label caption>Espèce : {{character.species}}.</q-item-label>
+            <q-item-label caption>Apparait dans {{character.episode.length}} épisode(s).</q-item-label>
+			</q-item-section>
+        </q-item>
+		<slot />
+      </q-list>
+    </q-card>
 </template>
 <script setup>
     const props = defineProps({

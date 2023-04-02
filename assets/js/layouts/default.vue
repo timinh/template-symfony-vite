@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-4">
-        <router-view />
-    </div>
+	<app-header />
+    <router-view />
+	<app-footer />
 </template>

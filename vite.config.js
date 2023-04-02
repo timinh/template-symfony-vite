@@ -1,11 +1,11 @@
 import { defineConfig } from "vite"
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
-import symfonyPlugin from "vite-plugin-symfony"
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 
 const twigRefreshPlugin = {
   name: 'twig-refresh',
@@ -23,16 +23,23 @@ const twigRefreshPlugin = {
 
 export default defineConfig({
     plugins: [
-        vue(),
+        vue({
+			template: { transformAssetUrls }
+		}),
+		quasar({
+			sassVariables: 'assets/scss/quasar-variables.scss'
+		}),
         Pages({
-            dirs: ['assets/js/pages']
+            dirs: [
+				{ dir: 'js/pages', baseRoute: '/'}
+			]
         }),
         Layouts({
-            layoutsDirs: 'assets/js/layouts',
+            layoutsDirs: 'js/layouts',
             defaultLayout: 'default'
         }),
         Components({
-            dirs: ['assets/js/components']
+            dirs: ['js/components']
         }),
         AutoImport({
           imports: [
@@ -41,18 +48,33 @@ export default defineConfig({
             '@vueuse/head'
           ]
         }),
-        symfonyPlugin(),
         twigRefreshPlugin
     ],
-    build: {
-        rollupOptions: {
-            input: {
-                app: "./assets/js/app.js"
-            },
-        },
-    },
     server: {
         port: 3000,
         host: '0.0.0.0',
+		origin: 'http://localhost:3000',
+		watch: {
+			disableGlobbing: false
+		}
+    },
+	root: './assets',
+	base: '/build/',
+	cacheDir: '../../../var/cache',
+    build: {
+		target: 'esnext',
+		manifest: true,
+		assetsDir: '',
+		outDir: '../public/build/',
+		emptyOutDir: true,
+        rollupOptions: {
+			output: {
+				manualChunks: undefined
+			},
+            input: {
+				'js/styles.js': resolve(__dirname, 'assets/js/styles.js'),
+                'js/app.js': resolve(__dirname, 'assets/js/app.js')
+            },
+        },
     },
 });

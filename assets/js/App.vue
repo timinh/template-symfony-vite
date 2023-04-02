@@ -1,8 +1,7 @@
 <template>
-    <navbar></navbar>
-    <router-view v-slot="{ Component, route }">
-        <transition :name="route.meta.transition || 'fade'" mode="out-in">
-            <component :is="Component" :key="route" />
-        </transition>
-    </router-view>
-</template>
+	<q-layout view="hHh lpR fFf">
+		<router-view v-slot="{ Component, route }">
+			<component :is="Component" :key="route" />
+		</router-view>
+	</q-layout>
+  </template>
