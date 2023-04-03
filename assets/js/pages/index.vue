@@ -32,7 +32,7 @@ meta:
 <script setup>
 import Api from '../composables/Api'
 import { onMounted } from 'vue'
-import { useApi } from '../composables/use-base-api'
+import { useApi } from '../composables/use-api'
 import { useCharacterStore } from '../store/characters'
 const store = useCharacterStore()
 
