@@ -32,7 +32,7 @@ meta:
 <script setup>
 import Api from '../composables/Api'
 import { onMounted } from 'vue'
-import { useBaseApi } from '../composables/use-base-api'
+import { useApi } from '../composables/use-base-api'
 import { useCharacterStore } from '../store/characters'
 const store = useCharacterStore()
 
@@ -51,7 +51,7 @@ query Characters($name:String!) {
 	}
 }
 `
-const { query, result: characters, loading, error, callApi: search} = useBaseApi(async(query)=> {
+const { query, result: characters, loading, error, callApi: search} = useApi(async(query)=> {
 	const res = await Api.post('https://rickandmortyapi.com/graphql',
 	{
 		query: charactersQuery,

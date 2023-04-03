@@ -32,11 +32,11 @@ meta:
 <script setup>
 import Api from '../composables/Api'
 import { onMounted } from 'vue'
-import { useBaseApi } from '../composables/use-base-api'
+import { useApi } from '../composables/use-api'
 import { useCharacterStore } from '../store/characters'
 const store = useCharacterStore()
 
-const { query, result: characters, loading, error, callApi: search} = useBaseApi(async(query)=> {
+const { query, result: characters, loading, error, callApi: search} = useApi(async(query)=> {
 	const res = await Api.get(`https://rickandmortyapi.com/api/character?name=${query}`)
 	return res.data.results
 })
