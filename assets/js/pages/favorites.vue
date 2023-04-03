@@ -1,7 +1,7 @@
 <template>
 	<q-page-container>
     <div class="q-pa-md">
-        <div class="text-h2">FavorisT</div>
+        <div class="text-h2">Favoris</div>
   		<div class="q-pa-md row items-start q-gutter-md">
       		<q-input square filled v-model="query" @update:model-value="search()" label="Chercher un personnage">
 				<template v-slot:append>
@@ -11,7 +11,7 @@
         </div>
   		<div class="q-pa-md row items-start q-gutter-md">
             <character-card class="m-1" v-for="bookmark in filteredBookmarks" :character="bookmark">
-				<call-to-action icon="remove" @click="store.removeBookmark(bookmark)">Enlever des favoris</call-to-action>
+				<card-item icon="bookmark_remove" @click="store.removeBookmark(bookmark)">Enlever des favoris</card-item>
 			</character-card>
         </div>
     </div>

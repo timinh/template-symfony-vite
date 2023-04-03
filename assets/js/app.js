@@ -4,7 +4,7 @@ import { createPinia } from 'pinia'
 import {setupLayouts} from 'virtual:generated-layouts'
 import pages from '~pages'
 import App from './App.vue'
-import { Quasar } from 'quasar'
+import { Quasar, Notify } from 'quasar'
 import quasarLang from 'quasar/lang/fr'
 
 // Import icon libraries
@@ -19,7 +19,10 @@ const router = createRouter({
 createApp(App).use(
 	router
 ).use(Quasar, {
-	plugins: {},
+	plugins: {
+		Notify
+	},
+	config: {notify:{}},
 	lang: quasarLang,
 	iconSet: quasarIconSet
   }

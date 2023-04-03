@@ -4,8 +4,8 @@
   		<div class="q-pa-md row items-start q-gutter-md">
 			<loader v-show="loading" />
             <character-card v-if="character" class="m-1" :character="character">
-				<call-to-action icon="add" v-if="!store.inBookmarks(character)" @click="store.addBookmark(character)">Ajouter aux favoris</call-to-action>
-				<call-to-action icon="remove" v-if="store.inBookmarks(character)" @click="store.removeBookmark(character)">Enlever des favoris</call-to-action>
+				<card-item icon="bookmark_add" v-if="!store.inBookmarks(character)" @click="store.addBookmark(character)">Ajouter aux favoris</card-item>
+				<card-item icon="bookmark_remove" v-if="store.inBookmarks(character)" @click="store.removeBookmark(character)">Enlever des favoris</card-item>
 			</character-card>
         </div>
     </div>
