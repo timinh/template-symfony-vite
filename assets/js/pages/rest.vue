@@ -9,8 +9,8 @@
 				</template>
 			</q-input>
         </div>
-  		<div class="q-pa-md row items-start q-gutter-md">
-			<loader v-show="loading" />
+		<loader v-show="loading" />
+  		<div v-if="characters.length>0" class="q-pa-md row items-start q-gutter-md">
             <character-card class="m-1" v-for="character in characters" :character="character">
 				<card-item icon="visibility" :to="{name: 'character_detail', params: {id: character.id} }">
 						Voir la fiche

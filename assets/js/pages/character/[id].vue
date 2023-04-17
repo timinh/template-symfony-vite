@@ -8,6 +8,7 @@
 				<card-item icon="bookmark_remove" v-if="store.inBookmarks(character)" @click="store.removeBookmark(character)">Enlever des favoris</card-item>
 			</character-card>
         </div>
+		<q-btn color="primary" @click="router.go(-1)">Retour</q-btn>
     </div>
 	</q-page-container>
 </template>

@@ -9,8 +9,11 @@
 				</template>
 			</q-input>
         </div>
-  		<div class="q-pa-md row items-start q-gutter-md">
+  		<div v-if="store.bookmarks.length>0" class="q-pa-md row items-start q-gutter-md">
             <character-card class="m-1" v-for="bookmark in filteredBookmarks" :character="bookmark">
+				<card-item icon="visibility" :to="{name: 'character_detail', params: {id: bookmark.id} }">
+						Voir la fiche
+				</card-item>
 				<card-item icon="bookmark_remove" @click="store.removeBookmark(bookmark)">Enlever des favoris</card-item>
 			</character-card>
         </div>
@@ -21,6 +24,7 @@
 name: 'favoris'
 meta:
     nav: true
+    middleware: [log, test]
 </route>
 <script setup>
 import {useCharacterStore} from '../store/characters'
