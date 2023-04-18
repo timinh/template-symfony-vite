@@ -24,7 +24,7 @@
 name: 'favoris'
 meta:
     nav: true
-    middleware: [noAccess, log]
+    isGranted: ["ROLE_USER"]
 </route>
 <script setup>
 	import {useCharacterStore} from '../store/characters'
