@@ -9,6 +9,7 @@ import quasarLang from 'quasar/lang/fr'
 
 // Import icon libraries
 import quasarIconSet from 'quasar/icon-set/svg-material-icons'
+import { useMiddleware } from './composables/use-middleware'
 
 const routes = setupLayouts(pages)
 
@@ -16,6 +17,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
+useMiddleware(router)
 createApp(App).use(
 	router
 ).use(Quasar, {

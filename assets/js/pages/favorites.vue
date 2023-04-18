@@ -24,10 +24,10 @@
 name: 'favoris'
 meta:
     nav: true
-    middleware: [log, test]
+    middleware: [noAccess, log]
 </route>
 <script setup>
-import {useCharacterStore} from '../store/characters'
+	import {useCharacterStore} from '../store/characters'
     const query = ref('')
     const store = useCharacterStore()
     const filteredBookmarks = computed( () => {
