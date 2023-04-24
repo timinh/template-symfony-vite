@@ -1,7 +1,7 @@
 <template>
 	<q-page-container>
     <div class="q-pa-md">
-  		<div class="q-pa-md row items-start q-gutter-md">
+  		<div class="q-pa-md row items-start q-gutter-xs">
 			<loader v-show="loading" />
             <character-card v-if="character" class="m-1" :character="character">
 				<card-item icon="bookmark_add" v-if="!store.inBookmarks(character)" @click="store.addBookmark(character)">Ajouter aux favoris</card-item>
