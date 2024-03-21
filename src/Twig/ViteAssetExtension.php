@@ -10,8 +10,12 @@ class ViteAssetExtension extends AbstractExtension
 	private bool $isDev;
 	private $manifestData;
 
-    public function __construct(string $mode, private string $manifest, private string $buildFolder = '/build/', private string $viteServer = 'http://localhost:3000')
-    {
+    public function __construct(
+        readonly string $mode,
+        private readonly string $manifest,
+        private readonly string $buildFolder = '/build/',
+        private readonly string $viteServer = 'http://localhost:3000'
+    ) {
 		$this->isDev = ($mode === 'dev');
     }
 
@@ -30,7 +34,7 @@ class ViteAssetExtension extends AbstractExtension
     public function assetDev(string $entry): string
     {
         $html = '<script type="module" src="' . $this->viteServer . '/@vite/client"></script>';
-        $html .= '<script type="module" src="' . $this->viteServer . '/' . $entry . '" defer></script>';
+        $html = '<script type="module" src="' . $this->viteServer. $this->buildFolder . $entry . '" defer></script>';
         return $html;
     }
 
