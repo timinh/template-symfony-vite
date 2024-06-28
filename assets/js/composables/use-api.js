@@ -1,5 +1,12 @@
 import { ref } from 'vue'
 
+/**
+ * usage : 
+const { query, result: characters, loading, error, callApi: search} = useApi(async(query)=> {
+	const res = await Api.get(`https://rickandmortyapi.com/api/character?name=${query}`)
+	return res.data.results
+})
+ */
 export function useApi(getResults) {
 	const query  = ref('')
 	const result = ref('')
