@@ -1,5 +1,6 @@
 <template>
     <p>Index page</p>
+    <p>Ajoutez votre contenu</p>
 </template>
 <route lang="yaml">
 name: 'index'
